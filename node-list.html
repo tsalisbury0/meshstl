@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MeshSTL Master List</title>
+  <link rel="icon" href="MeshSTL.webp" type="image/x-icon">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="https://raw.githubusercontent.com/tsalisbury0/meshstl/refs/heads/main/site.webmanifest" />
+
+  <!-- Theme color for browser UI -->
+  <meta name="theme-color" content="#3b82f6" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen text-gray-900">
+  <div class="max-w-6xl mx-auto py-10 px-4">
+    <!-- Title and Navigation -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 space-y-4 sm:space-y-0">
+      <h1 class="text-3xl font-bold">MeshSTL Master List</h1>
+      <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
+        <a href="node-list.php" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-3 rounded text-sm w-full sm:w-auto text-center">Edit</a>
+        <a href="https://meshstl.org" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-3 rounded text-sm w-full sm:w-auto text-center">Back to Site</a>
+      </div>
+    </div>
+
+    <!-- Search input -->
+    <input type="text" id="searchInput" placeholder="Search..." class="mb-4 p-3 border w-full max-w-full rounded" />
+
+    <!-- Table -->
+    <div class="overflow-x-auto rounded shadow">
+      <table class="min-w-full bg-white shadow-md rounded">
+        <thead class="bg-gray-200 text-left">
+          <tr>
+            <th scope="col" class="px-4 py-3 cursor-pointer">Long Name</th>
+            <th scope="col" class="px-4 py-3 cursor-pointer">Short Name</th>
+            <th scope="col" class="px-4 py-3 cursor-pointer">User ID</th>
+            <th scope="col" class="px-4 py-3 cursor-pointer">Role</th>
+          </tr>
+        </thead>
+        <tbody id="nodeTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Register service worker for offline support
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => console.log('Service Worker registered:', reg.scope))
+          .catch(err => console.error('Service Worker registration failed:', err));
+      });
+    }
+
+    async function loadData() {
+      try {
+        const response = await fetch(`data.json?t=${Date.now()}`, {
+          cache: 'no-store'
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+        const tbody = document.getElementById("nodeTableBody");
+        tbody.innerHTML = "";
+
+        if (!Array.isArray(data) || data.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4">No data available.</td></tr>`;
+          return;
+        }
+
+        data.forEach(entry => {
+          const row = document.createElement("tr");
+          row.classList.add("border-t", "hover:bg-gray-100");
+          row.innerHTML = `
+            <td class="px-4 py-3">${entry.long || ""}</td>
+            <td class="px-4 py-3">${entry.short || ""}</td>
+            <td class="px-4 py-3">${entry.id || ""}</td>
+            <td class="px-4 py-3">${entry.role || ""}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } catch (error) {
+        console.error("Failed to load data.json:", error);
+        const tbody = document.getElementById("nodeTableBody");
+        tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-red-500">Error loading data.</td></tr>`;
+      }
+    }
+
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+      const filter = this.value.toLowerCase();
+      const rows = document.querySelectorAll("tbody tr");
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? "" : "none";
+      });
+    });
+
+    document.querySelectorAll("th").forEach((header, index) => {
+      header.addEventListener("click", () => {
+        const table = header.closest("table");
+        const tbody = table.querySelector("tbody");
+        const rows = Array.from(tbody.querySelectorAll("tr"));
+        const isAsc = header.classList.toggle("asc");
+
+        // Remove arrows from all headers
+        document.querySelectorAll("th").forEach((th, i) => {
+          if (i !== index) {
+            th.classList.remove("asc");
+            th.textContent = th.textContent.replace(/[\u2191\u2193]/g, "");
+          }
+        });
+
+        // Add arrow to the sorted column
+        header.textContent = header.textContent.replace(/[\u2191\u2193]/g, "") + (isAsc ? " ?" : " ?");
+
+        rows.sort((a, b) => {
+          const aText = a.children[index].textContent.trim();
+          const bText = b.children[index].textContent.trim();
+          return isAsc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+        });
+
+        tbody.innerHTML = "";
+        rows.forEach(row => tbody.appendChild(row));
+      });
+    });
+
+    loadData();
+
+    // Uncomment below to auto-refresh the table every 30 seconds
+    // setInterval(loadData, 30000);
+  </script>
+</body>
+</html>
