@@ -348,23 +348,37 @@
 	    <li>Click Accept</li>
 	  </ul>
 
-	  <p style="margin-top: 20px;">
-	    <a href="#" onclick="showQR()" style="color: #17A56E; text-decoration: underline;">Click here to scan a QR Code for all channels</a>
-	  </p>
+	<p style="margin-top: 20px;">
+  <a href="#" onclick="showQR(); return false;" style="color: #17A56E; text-decoration: underline;">
+    Click here to scan a QR Code for all channels
+  </a>
+</p>
 
-	  <!-- QR Modal -->
-	  <div id="qrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); align-items:center; justify-content:center;">
-		    <div style="background:white; padding:20px; border-radius:10px; position:relative; max-width:90%; max-height:90%;">
-	      <span onclick="document.getElementById('qrModal').style.display='none'" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; font-size: 24px;">&times;</span>
-	      <img src="/qr-code.png" alt="MeshSTL All Channels QR Code" style="max-width:100%; max-height:80vh; display:block; margin:auto;">
-	    </div>
-	  </div>
+<!-- QR Modal -->
+<div id="qrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); align-items:center; justify-content:center;">
+  <div style="background:white; padding:20px; border-radius:10px; position:relative; max-width:90%; max-height:90%; overflow:auto;">
+    <span onclick="closeQR()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; font-size: 24px;">&times;</span>
+    <img src="/qr-code.png" alt="MeshSTL All Channels QR Code" style="max-width:100%; max-height:80vh; display:block; margin:auto;">
+  </div>
+</div>
 
-	  <script>
-	    function showQR() {
-	      document.getElementById('qrModal').style.display = 'flex';
-	    }
-	  </script>
+<script>
+  function showQR() {
+    document.getElementById('qrModal').style.display = 'flex';
+    document.body.classList.add('modal-open');
+  }
+
+  function closeQR() {
+    document.getElementById('qrModal').style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
+</script>
+
+<style>
+  body.modal-open {
+    overflow: hidden;
+  }
+</style>
 	</section>
 
 	<section id="meshstleas">
