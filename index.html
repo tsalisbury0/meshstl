@@ -1,242 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- HTML Meta Tags -->
-<title>MeshSTL</title>
-<meta name="description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MeshSTL</title>
+  <meta name="description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
 
-<!-- Facebook Meta Tags -->
-<meta property="og:url" content="https://meshstl.org">
-<meta property="og:type" content="website">
-<meta property="og:title" content="MeshSTL">
-<meta property="og:description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
-<meta property="og:image" content="https://meshstl.org/MeshSTL.png">
+  <!-- Open Graph (Facebook & Twitter) -->
+  <meta property="og:url" content="https://meshstl.org">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MeshSTL">
+  <meta property="og:description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
+  <meta property="og:image" content="https://meshstl.org/MeshSTL.png">
 
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:domain" content="meshstl.org">
-<meta property="twitter:url" content="https://meshstl.org">
-<meta name="twitter:title" content="MeshSTL">
-<meta name="twitter:description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
-<meta name="twitter:image" content="https://meshstl.org/MeshSTL512.png">
-
-<!-- Meta Tags Generated via https://www.opengraph.xyz -->
-<meta charset="UTF-8">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="meshstl.org">
+  <meta property="twitter:url" content="https://meshstl.org">
+  <meta name="twitter:title" content="MeshSTL">
+  <meta name="twitter:description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
+  <meta name="twitter:image" content="https://meshstl.org/MeshSTL512.png">
 
   <!-- PWA manifest -->
   <link rel="manifest" href="site.webmanifest" />
 
-<style>
-  /* Reset and base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #E7F5E1; /* Light background */
-    color: #1B9C3A; /* Meshtastic green */
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+  <style>
+    /* Base reset */
+    * {
+      box-sizing: border-box;
+    }
 
-  header {
-    background-color: #1B9C3A;
-    color: white;
-    text-align: center;
-    padding: 60px 20px 40px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-    position: relative; /* for hamburger positioning */
-  }
-  header h1 {
-    font-weight: 700;
-    font-size: 2.8rem;
-    margin-bottom: 10px;
-  }
-  header p {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin: 0 auto;
-    font-weight: 400;
-  }
-
-  /* NAVIGATION */
-  nav {
-    background-color: #17A56E; /* Slightly darker green */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 15px 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    gap: 15px;
-    transition: max-height 0.3s ease;
-  }
-  nav a {
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    padding: 10px 16px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-size: 1.1rem;
-    user-select: none;
-  }
-  nav a:hover,
-  nav a:focus {
-    background-color: #145c34;
-    color: white;
-    transform: scale(1.05);
-    outline: none;
-  }
-
-  main {
-    flex-grow: 1;
-    padding: 30px 20px 60px;
-    max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  section {
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(27, 156, 58, 0.15);
-    margin-bottom: 30px;
-    padding: 25px 30px;
-    color: #1B9C3A;
-  }
-  section h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.75rem;
-    font-weight: 700;
-    border-bottom: 2px solid #17A56E;
-    padding-bottom: 6px;
-  }
-  section p, section ul {
-    font-size: 1.1rem;
-    font-weight: 400;
-  }
-  section ul {
-    padding-left: 20px;
-    margin-top: 10px;
-  }
-  section ul li {
-    margin-bottom: 6px;
-  }
-
-  a {
-    color: #1B9C3A;
-    text-decoration: underline;
-    transition: color 0.25s ease;
-  }
-  a:hover,
-  a:focus {
-    color: #145c34;
-    outline: none;
-  }
-
-  .discord-icon {
-    width: 28px;
-    vertical-align: middle;
-    margin-right: 8px;
-    filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
-  }
-
-  footer {
-    background-color: #1B9C3A;
-    color: white;
-    text-align: center;
-    padding: 15px 10px;
-    font-size: 0.95rem;
-    box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    bottom: 0;
-    user-select: none;
-  }
-
-  /* Hamburger Button */
-  #menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #fff;
-    cursor: pointer;
-    padding: 10px 20px;
-    user-select: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-  }
-
-  /* MOBILE NAVIGATION */
-  @media (max-width: 768px) {
-    nav {
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #E7F5E1;
+      color: #1B9C3A;
+      line-height: 1.6;
+      display: flex;
       flex-direction: column;
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 10px;
-      gap: 0;
-      box-shadow: none;
-      background-color: #17A56E;
-      border-radius: 0 0 12px 12px;
-      transition: max-height 0.35s ease;
+      min-height: 100vh;
     }
 
-    nav.open {
-      max-height: 1000px; /* large enough to show all links */
-      padding: 15px 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    nav a {
-      padding: 12px 16px;
-      font-size: 1.2rem;
-      border-radius: 0;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      width: 100%;
+    header {
+      background-color: #1B9C3A;
+      color: white;
       text-align: center;
-      gap: 0;
-    }
-    nav a:last-child {
-      border-bottom: none;
+      padding: 60px 20px 40px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+      position: relative;
     }
 
-    /* Show hamburger button */
-    #menu-toggle {
-      display: block;
-    }
-  }
-
-  /* Smaller devices adjustments */
-  @media (max-width: 600px) {
-    nav a {
-      font-size: 1rem;
-      padding: 8px 12px;
-    }
     header h1 {
-      font-size: 2rem;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
+
     header p {
-      font-size: 1rem;
-      max-width: 100%;
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
+
+    nav {
+      background-color: #17A56E;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px 10px;
+      transition: max-height 0.3s ease;
+    }
+
+    nav a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background-color: #145c34;
+      transform: scale(1.05);
+      outline: none;
+    }
+
     main {
-      padding: 20px 15px 50px;
+      flex-grow: 1;
+      padding: 30px 20px 60px;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
     }
+
     section {
-      padding: 20px 15px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(27, 156, 58, 0.15);
+      margin-bottom: 30px;
+      padding: 25px 30px;
     }
+
     section h3 {
-      font-size: 1.4rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 0;
+      border-bottom: 2px solid #17A56E;
+      padding-bottom: 6px;
     }
-  }
-</style>
+
+    section p, section ul {
+      font-size: 1.1rem;
+    }
+
+    section ul {
+      padding-left: 20px;
+    }
+
+    section ul li {
+      margin-bottom: 6px;
+    }
+
+    a {
+      color: #1B9C3A;
+      text-decoration: underline;
+    }
+
+    a:hover,
+    a:focus {
+      color: #145c34;
+      outline: none;
+    }
+
+    .discord-icon {
+      width: 28px;
+      vertical-align: middle;
+      margin-right: 8px;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
+    }
+
+    footer {
+      background-color: #1B9C3A;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.95rem;
+      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      bottom: 0;
+    }
+
+    #menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      padding: 10px 20px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 10px;
+        border-radius: 0 0 12px 12px;
+      }
+
+      nav.open {
+        max-height: 1000px;
+        padding: 15px 10px;
+      }
+
+      nav a {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding: 12px 16px;
+      }
+
+      nav a:last-child {
+        border-bottom: none;
+      }
+
+      #menu-toggle {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      main {
+        padding: 20px 15px 50px;
+      }
+
+      section {
+        padding: 20px 15px;
+      }
+
+      section h3 {
+        font-size: 1.4rem;
+      }
+
+      nav a {
+        font-size: 1rem;
+        padding: 8px 12px;
+      }
+    }
+
+    #qrModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 10px;
+      overflow: auto;
+    }
+
+    #qrModal img {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+      margin: auto;
+    }
+  </style>
 </head>
 <body>
 
@@ -257,7 +265,7 @@
   <a href="#meshmap">MeshMap</a>
 </nav>
 
-    <main>
+<main>
 	<section id="about">
 	    <h3>About MeshSTL</h3>
 	    <p>MeshSTL is a community-driven initiative to bring offline communication to the St. Louis area using the Meshtastic platform. By leveraging low-power, long-range radios, our decentralized mesh network allows people to stay connected without relying on cellular networks or the internet.</p>
@@ -418,7 +426,7 @@
 </main>
 
 <footer>
-    &copy; 2025 MeshSTL Community. All rights reserved.
+  &copy; 2025 MeshSTL Community. All rights reserved.
 </footer>
 
 <script>
@@ -429,6 +437,22 @@
     const isOpen = nav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', isOpen);
   });
+
+  // Close nav on mobile when a link is clicked
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', false);
+      }
+    });
+  });
+
+  // QR modal function
+  function showQR() {
+    document.getElementById('qrModal').style.display = 'flex';
+  }
 </script>
 
+</body>
 </html>
