@@ -24,226 +24,273 @@
   <link rel="manifest" href="site.webmanifest" />
 
   <style>
-    /* Base reset */
-    * {
-      box-sizing: border-box;
-    }
+/* Reset and base */
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #E7F5E1; /* Light background */
+  color: #1B9C3A; /* Meshtastic green */
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #E7F5E1;
-      color: #1B9C3A;
-      line-height: 1.6;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+header {
+  background-color: #1B9C3A;
+  color: white;
+  text-align: center;
+  padding: 60px 20px 40px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    header {
-      background-color: #1B9C3A;
-      color: white;
-      text-align: center;
-      padding: 60px 20px 40px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-      position: relative;
-    }
+header h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
 
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
+header p {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 400;
+}
 
-    header p {
-      font-size: 1.25rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+/* Hamburger Button */
+#menu-toggle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  margin-top: 20px;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* space between icon and text */
+  transition: background-color 0.3s ease;
+}
 
-    nav {
-      background-color: #17A56E;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      padding: 15px 10px;
-      transition: max-height 0.3s ease;
-    }
+#menu-toggle:hover,
+#menu-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
 
-    nav a {
-      color: white;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 10px 16px;
-      border-radius: 6px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      font-size: 1.1rem;
-    }
+/* NAVIGATION */
+nav {
+  background-color: #17A56E; /* Slightly darker green */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+  transition: max-height 0.3s ease;
+}
 
-    nav a:hover,
-    nav a:focus {
-      background-color: #145c34;
-      transform: scale(1.05);
-      outline: none;
-    }
+nav a {
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1.1rem;
+  user-select: none;
+}
 
-    main {
-      flex-grow: 1;
-      padding: 30px 20px 60px;
-      max-width: 900px;
-      margin: 0 auto;
-      width: 100%;
-    }
+nav a:hover,
+nav a:focus {
+  background-color: #145c34;
+  color: white;
+  transform: scale(1.05);
+  outline: none;
+}
 
-    section {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(27, 156, 58, 0.15);
-      margin-bottom: 30px;
-      padding: 25px 30px;
-    }
+main {
+  flex-grow: 1;
+  padding: 30px 20px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
 
-    section h3 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-top: 0;
-      border-bottom: 2px solid #17A56E;
-      padding-bottom: 6px;
-    }
+section {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(27, 156, 58, 0.15);
+  margin-bottom: 30px;
+  padding: 25px 30px;
+  color: #1B9C3A;
+}
 
-    section p, section ul {
-      font-size: 1.1rem;
-    }
+section h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  border-bottom: 2px solid #17A56E;
+  padding-bottom: 6px;
+}
 
-    section ul {
-      padding-left: 20px;
-    }
+section p, section ul {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
 
-    section ul li {
-      margin-bottom: 6px;
-    }
+section ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
 
-    a {
-      color: #1B9C3A;
-      text-decoration: underline;
-    }
+section ul li {
+  margin-bottom: 6px;
+}
 
-    a:hover,
-    a:focus {
-      color: #145c34;
-      outline: none;
-    }
+a {
+  color: #1B9C3A;
+  text-decoration: underline;
+  transition: color 0.25s ease;
+}
 
-    .discord-icon {
-      width: 28px;
-      vertical-align: middle;
-      margin-right: 8px;
-      filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
-    }
+a:hover,
+a:focus {
+  color: #145c34;
+  outline: none;
+}
 
-    footer {
-      background-color: #1B9C3A;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-      font-size: 0.95rem;
-      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      bottom: 0;
-    }
+.discord-icon {
+  width: 28px;
+  vertical-align: middle;
+  margin-right: 8px;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
+}
 
-    #menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: #fff;
-      cursor: pointer;
-      padding: 10px 20px;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
+footer {
+  background-color: #1B9C3A;
+  color: white;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 0.95rem;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  bottom: 0;
+  user-select: none;
+}
 
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        max-height: 0;
-        overflow: hidden;
-        padding: 0 10px;
-        border-radius: 0 0 12px 12px;
-      }
+/* MOBILE NAVIGATION */
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: block;
+  }
 
-      nav.open {
-        max-height: 1000px;
-        padding: 15px 10px;
-      }
+  nav {
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 10px;
+    gap: 0;
+    box-shadow: none;
+    background-color: #17A56E;
+    border-radius: 0 0 12px 12px;
+    transition: max-height 0.35s ease;
+  }
 
-      nav a {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-        padding: 12px 16px;
-      }
+  nav.open {
+    max-height: 1000px; /* large enough to show all links */
+    padding: 15px 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
 
-      nav a:last-child {
-        border-bottom: none;
-      }
+  nav a {
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    width: 100%;
+    text-align: center;
+    gap: 0;
+  }
 
-      #menu-toggle {
-        display: block;
-      }
-    }
+  nav a:last-child {
+    border-bottom: none;
+  }
+}
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
+/* Smaller devices adjustments */
+@media (max-width: 600px) {
+  nav a {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  header p {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  main {
+    padding: 20px 15px 50px;
+  }
+  section {
+    padding: 20px 15px;
+  }
+  section h3 {
+    font-size: 1.4rem;
+  }
+}
 
-      header p {
-        font-size: 1rem;
-      }
+/* Modal styles (QR code) */
+#qrModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 10px;
+  overflow: auto;
+  display: flex;
+}
 
-      main {
-        padding: 20px 15px 50px;
-      }
+#qrModal > div {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+}
 
-      section {
-        padding: 20px 15px;
-      }
+#qrModal img {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+  margin: auto;
+}
 
-      section h3 {
-        font-size: 1.4rem;
-      }
-
-      nav a {
-        font-size: 1rem;
-        padding: 8px 12px;
-      }
-    }
-
-    #qrModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 10px;
-      overflow: auto;
-    }
-
-    #qrModal img {
-      max-width: 100%;
-      max-height: 80vh;
-      display: block;
-      margin: auto;
-    }
+body.modal-open {
+  overflow: hidden;
+}
   </style>
 </head>
 <body>
@@ -251,8 +298,10 @@
 <header>
   <h1>Welcome to MeshSTL</h1>
   <p>Connecting St. Louis through Meshtastic - A reliable communication network</p>
-  <button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">&#9776;</button>
-</header>
+
+<button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+  &#9776; Sections
+</button>
 
 <nav id="primary-navigation" role="navigation" aria-label="Primary navigation">
   <a href="#about">About</a>
