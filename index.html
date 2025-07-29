@@ -387,34 +387,83 @@ body.modal-open {
 	    while <strong>Secondary channels</strong> serve specific roles like area mesh chats and emergency alerting. (Easy setup QR Code available for scanning below)
 	  </p>
 
-	  <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 20px;">
-	    <table style="width:100%; border-collapse: collapse;">
-	      <thead>
-	        <tr style="background-color: #17A56E; color: white;">
-	          <th style="padding: 10px; text-align: left; border-radius: 8px 0 0 0;">Channel Role</th>
-	          <th style="padding: 10px; text-align: left;">Channel Name</th>
-	          <th style="padding: 10px; text-align: left;">Purpose</th>
-	        </tr>
-	      </thead>
-	      <tbody style="background-color: #fff; color: #1B9C3A;">
-	        <tr>
-	          <td style="padding: 10px; border-top: 1px solid #ccc;"><strong>Primary</strong></td>
-	          <td style="padding: 10px; border-top: 1px solid #ccc;"><strong>LongFast</strong></td>
-	          <td style="padding: 10px; border-top: 1px solid #ccc;">Node discovery, chatting with nodes outside the MeshSTL network</td>
-	        </tr>
-	        <tr>
-	          <td style="padding: 10px;"><strong>Secondary</strong></td>
-	          <td style="padding: 10px;"><strong>MeshSTL</strong></td>
-	          <td style="padding: 10px;">Primary internal mesh communication</td>
-	        </tr>
-	        <tr>
-	          <td style="padding: 10px;"><strong>Secondary</strong></td>
-	          <td style="padding: 10px;"><strong>MeshSTL-EAS</strong></td>
-	          <td style="padding: 10px;">Emergency Alert System (EAS) alerts (see section below)</td>
-	        </tr>
-	      </tbody>
-	    </table>
-	  </div>
+	<style>
+  /* Table container scroll */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+  }
+
+  table.meshstl-channels {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* ensures horizontal scroll on small screens */
+  }
+
+  table.meshstl-channels thead tr {
+    background-color: #17A56E;
+    color: white;
+  }
+
+  table.meshstl-channels th,
+  table.meshstl-channels td {
+    padding: 10px;
+    text-align: left;
+    border-top: 1px solid #ccc;
+  }
+
+  table.meshstl-channels th:first-child {
+    border-radius: 8px 0 0 0;
+  }
+
+  table.meshstl-channels th:last-child {
+    border-radius: 0 8px 0 0;
+  }
+
+  table.meshstl-channels tbody {
+    background-color: #fff;
+    color: #1B9C3A;
+  }
+
+  /* Responsive adjustments for smaller devices */
+  @media (max-width: 600px) {
+    table.meshstl-channels th,
+    table.meshstl-channels td {
+      padding: 8px 6px;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<div class="table-container">
+  <table class="meshstl-channels" aria-label="MeshSTL Channels">
+    <thead>
+      <tr>
+        <th>Channel Name</th>
+        <th>Channel Role</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>LongFast</strong></td>
+        <td><strong>Primary</strong></td>
+        <td>Node discovery, chatting with nodes outside the MeshSTL network</td>
+      </tr>
+      <tr>
+        <td><strong>MeshSTL</strong></td>
+        <td><strong>Secondary</strong></td>
+        <td>Primary internal mesh communication</td>
+      </tr>
+      <tr>
+        <td><strong>MeshSTL-EAS</strong></td>
+        <td><strong>Secondary</strong></td>
+        <td>Emergency Alert System (EAS) alerts (see section below)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 	  <p style="margin-top: 20px;">To join the MeshSTL network:</p>
 	  <ul style="margin-top: 10px; padding-left: 20px;">
