@@ -322,12 +322,20 @@ body.modal-open {
 <body>
 
 <header>
+  <img src="MeshSTL.png" alt="MeshSTL Logo" class="logo">
   <h1>Welcome to MeshSTL</h1>
   <p>Connecting St. Louis through Meshtastic - A reliable communication network</p>
+  <button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">&#9776; Sections</button>
+</header>
 
-<button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">
-  &#9776; Sections
-</button>
+<style>
+  header img.logo {
+    height: 60px;
+    display: block;
+    margin: 0 auto 15px auto; /* centers and adds spacing below */
+  }
+</style>
+
 
 <nav id="primary-navigation" role="navigation" aria-label="Primary navigation">
   <a href="#about">About</a>
