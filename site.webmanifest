@@ -4,7 +4,7 @@
   "start_url": "https://meshstl.org/",
   "display": "standalone",
   "background_color": "#f3f4f6",
-  "theme_color": "#3b82f6",
+  "theme_color": "#1B9C3A",
   "icons": [
     {
       "src": "https://meshstl.org/MeshSTL192.png",
