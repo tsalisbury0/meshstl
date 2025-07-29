@@ -291,6 +291,32 @@ footer {
 body.modal-open {
   overflow: hidden;
 }
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  background-color: #1B9C3A;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(27, 156, 58, 0.7);
+  z-index: 10000;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+#scrollTopBtn:hover,
+#scrollTopBtn:focus {
+  background-color: #145c34;
+  outline: none;
+  opacity: 0.85;
+}
+
   </style>
 </head>
 <body>
@@ -516,6 +542,37 @@ body.modal-open {
     document.getElementById('qrModal').style.display = 'flex';
   }
 </script>
+
+<button id="scrollTopBtn" aria-label="Scroll to top" title="Scroll to top">⬆️</button>
+
+<script>
+  (function() {
+    const scrollBtn = document.getElementById('scrollTopBtn');
+
+    if (!scrollBtn) return;
+
+    // Show button immediately if already scrolled past threshold on page load
+    if (window.scrollY > 150) {
+      scrollBtn.style.display = 'block';
+    }
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) {
+        scrollBtn.style.display = 'block';
+      } else {
+        scrollBtn.style.display = 'none';
+      }
+    });
+
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  })();
+</script>
+
 
 </body>
 </html>
