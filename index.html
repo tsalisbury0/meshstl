@@ -121,12 +121,33 @@ nav a:focus {
   outline: none;
 }
 
-main {
-  flex-grow: 1;
-  padding: 30px 20px 60px;
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
+main a {
+  color: #2C2D3C;
+  text-decoration: underline;
+  transition: color 0.25s ease;
+}
+
+main a:hover,
+main a:focus {
+  color: #145c34;
+  outline: none;
+}
+
+/* Override nav links to look like buttons */
+nav a {
+  color: #2C2D3C;
+  text-decoration: none !important;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: #2C2D3C;
+  color: #67EA94; /* contrast color */
+  transform: scale(1.05);
 }
 
 section {
