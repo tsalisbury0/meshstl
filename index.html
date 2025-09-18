@@ -368,7 +368,7 @@ body.modal-open {
   <a href="#get-involved">Get Involved</a>
   <a href="#lora-settings">LoRa Config</a>
   <a href="#channels">MeshSTL Channels</a>
-  <a href="#meshstleas">MeshSTL-EAS</a>
+  <a href="#easystem">EAS System</a>
   <a href="#mqtt-settings">MQTT Server</a>
   <a href="#meshview">Mesh Info</a>
 </nav>
@@ -538,18 +538,23 @@ body.modal-open {
 </style>
 	</section>
 
-	<section id="meshstleas">
-  	  <h3>MeshSTL-EAS</h3>
-   	 <p>MeshSTL-EAS is a special channel designed for emergency alert systems (EAS) sent from the dedicated EAS Node (see node list). It is used to broadcast critical emergency alerts within the MeshSTL network. (See section above for settings)</p>
-  	  <p>Ensure these settings are correctly configured in the device to ensure seamless integration with the MeshSTL-EAS system. If you are configuring a Meshtastic device for this channel, follow the steps outlined here.</p>
+	<section id="easystem">
+  	  <h3>EAS System</h3>
+   	 <p>EAS System consist of special channels designed for emergency alert systems (EAS) sent from the dedicated EAS Node. It is used to broadcast critical emergency alerts within the MeshSTL LoRa and MQTT network.</p>
+  	  <p>Ensure these settings are correctly configured in the device to ensure seamless integration with the EAS System. If you are configuring a Meshtastic device for these channel, follow the steps outlined here.</p>
   	  <p><strong>Important Notes:</strong> The uplink and downlink are only needed if you are using MQTT for communication. For other setups, these may not be necessary.</p>
 
   	  <h4>Coverage Area (Counties/Cities)</h4>
-  	  <img src="MeshSTL-EAS.png" alt="Map showing coverage area of MeshSTL-EAS channel" style="max-width:100%; height:auto; margin-bottom:1em;">
-  	  <p>The MeshSTL-EAS channel covers the following counties and cities:</p>
+  	  <img src="MeshSTL-EAS.png" alt="Map showing coverage area of EAS System channels" style="max-width:100%; height:auto; margin-bottom:1em;">
+  	  <p>The EAS System settings:</p>
   	  <ul>
-   	     <li><strong>In Illinois:</strong> Bond, Calhoun, Clinton , Jersey, Macoupin, Madison, Monroe, Montgomery, Randolph, St. Clair, Washington</li>
-   	     <li><strong>In Missouri:</strong> City of St. Louis, Crawford, Dent, Franklin, Gasconade, Jefferson, Maries, Montgomery, Phelps, Pulaski, St. Charles, St. Francois, St. Louis, Ste. Genevieve, Warren, Washington</li>
+   	     <li><strong>RED:</strong>MeshSTL-EAS</li>
+   	     <li><strong>BLUE:</strong>CMRG-EAS</li>
+		 <li><strong>PURPLE:</strong>ILMesh-EAS</li>
+		 <li><strong>ORANGE:</strong>SEMO-EAS</li>
+		 <li><strong>YELLOW:</strong>FLWMesh-EAS</li>
+		 <li><strong>PINK:</strong>NEMO-EAS</li>
+		 <li><strong>PSK Key:</strong>"AQ==" (for all channels of EAS)</li>
   	  </ul>
 	</section>
 
