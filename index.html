@@ -343,6 +343,99 @@ body.modal-open {
     display: none !important;
   }
 }
+
+/* === DARK MODE (auto via system preference) === */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1b1b1b; /* flipped background */
+    color: #E7F5E1; /* light text */
+  }
+
+  header {
+    background-color: #2C2D3C;
+    color: #67EA94;
+  }
+
+  header h1, header p {
+    color: #67EA94;
+  }
+
+  #menu-toggle {
+    border-color: #67EA94;
+    color: #67EA94;
+  }
+  #menu-toggle:hover {
+    background-color: #67EA94;
+    color: #2C2D3C;
+  }
+
+  nav {
+    background-color: #2C2D3C;
+  }
+
+  nav a {
+    color: #E7F5E1;
+  }
+
+  nav a:hover, nav a:focus {
+    background-color: #67EA94;
+    color: #2C2D3C;
+  }
+
+  section {
+    background-color: #2C2D3C;
+    color: #E7F5E1;
+    box-shadow: 0 4px 12px rgba(103, 234, 148, 0.15);
+  }
+
+  section h3 {
+    border-bottom-color: #67EA94;
+    color: #67EA94;
+  }
+
+  a {
+    color: #67EA94;
+  }
+
+  a:hover, a:focus {
+    color: #E7F5E1;
+  }
+
+  footer {
+    background-color: #2C2D3C;
+    color: #67EA94;
+  }
+
+  table.meshstl-channels thead tr {
+    background-color: #2C2D3C;
+    color: #67EA94;
+  }
+
+  table.meshstl-channels tbody {
+    background-color: #1b1b1b;
+    color: #E7F5E1;
+  }
+
+  #scrollTopBtn {
+    background-color: #2C2D3C;
+    color: #67EA94;
+    box-shadow: 0 3px 6px rgba(103, 234, 148, 0.5);
+  }
+
+  #scrollTopBtn:hover {
+    background-color: #67EA94;
+    color: #2C2D3C;
+  }
+
+  #qrModal > div {
+    background: #2C2D3C;
+    color: #E7F5E1;
+  }
+
+  #qrModal img {
+    filter: brightness(0.9) contrast(1.1);
+  }
+}
   </style>
 </head>
 <body>
