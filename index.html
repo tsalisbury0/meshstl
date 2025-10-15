@@ -244,7 +244,10 @@
 <script>
   const menuToggle=document.getElementById('menu-toggle');
   const nav=document.getElementById('primary-navigation');
-  menuToggle.addEventListener('click',()=>{ const isOpen=nav.classList.toggle('open'); menuToggle.setAttribute('aria-expanded',isOpen); });
+  menuToggle.addEventListener('click', () => {
+  nav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+});
   nav.querySelectorAll('a').forEach(link=>{ link.addEventListener('click',()=>{ if(nav.classList.contains('open')){ nav.classList.remove('open'); menuToggle.setAttribute('aria-expanded',false); } }); });
 
   function showQR(){ document.getElementById('qrModal').style.display='flex'; document.body.classList.add('modal-open'); }
