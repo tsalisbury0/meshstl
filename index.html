@@ -27,123 +27,103 @@
     * { box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; padding: 0;
-      background-color: #E7F5E1;
-      color: #2C2D3C;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
+      margin:0; padding:0;
+      background-color:#E7F5E1; color:#2C2D3C;
+      line-height:1.6; display:flex; flex-direction:column; min-height:100vh;
     }
 
     /* Header */
     header {
-      background-color: #67EA94;
-      color: #2C2D3C;
-      text-align: center;
-      padding: 60px 20px 40px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background-color:#67EA94; color:#2C2D3C;
+      text-align:center; padding:60px 20px 40px;
+      display:flex; flex-direction:column; align-items:center;
     }
-    header img.logo { height: 60px; display: block; margin-bottom: 15px; }
-    header h1 { font-weight: 700; font-size: 2.8rem; margin-bottom: 10px; }
-    header p { font-size: 1.25rem; max-width: 600px; margin: 0 auto; font-weight: 400; }
+    header img.logo { height:60px; margin-bottom:15px; }
+    header h1 { font-size:2.8rem; margin-bottom:10px; }
+    header p { font-size:1.25rem; max-width:600px; margin:0 auto; }
+
+    /* Hamburger */
+    #menu-toggle { display:none; font-size:1.25rem; font-weight:600; padding:8px 20px; cursor:pointer; border:2px solid white; border-radius:6px; background:transparent; color:#2C2D3C; }
+    #menu-toggle:hover, #menu-toggle:focus { background-color:#67EA94; }
 
     /* Nav */
-    #menu-toggle {
-      font-size: 1.25rem; font-weight: 600; padding: 8px 20px;
-      background-color: transparent; border: 2px solid white; border-radius: 6px;
-      color: #2C2D3C; cursor: pointer; user-select: none; margin-top: 20px;
-      display: inline-flex; align-items: center; gap: 8px; transition: background-color 0.3s ease;
-    }
-    #menu-toggle:hover, #menu-toggle:focus { background-color: #67EA94; }
-
     nav {
-      background-color: #67EA94;
-      display: flex; flex-wrap: wrap; justify-content: center; padding: 15px 10px;
-      gap: 15px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: max-height 0.3s ease;
+      background-color:#67EA94; display:flex; flex-wrap:wrap; justify-content:center; padding:15px 10px; gap:15px;
     }
     nav a {
-      color: #2C2D3C; font-weight: 600; text-decoration: none;
-      padding: 10px 16px; border-radius: 6px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      color:#2C2D3C; font-weight:600; text-decoration:none; padding:10px 16px; border-radius:6px; transition:0.3s;
     }
-    nav a:hover, nav a:focus { background-color: #2C2D3C; color: #67EA94; transform: scale(1.05); }
+    nav a:hover, nav a:focus { background-color:#2C2D3C; color:#67EA94; transform:scale(1.05); }
 
     /* Sections */
     section {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(27,156,58,0.15);
-      margin-bottom: 30px;
-      padding: 25px 30px;
-      color: #2C2D3C;
+      background-color:#fff; color:#2C2D3C;
+      border-radius:12px; box-shadow:0 4px 12px rgba(27,156,58,0.15);
+      margin-bottom:30px; padding:25px 30px;
     }
-    section h3 {
-      margin-top: 0; margin-bottom: 15px;
-      font-size: 1.75rem; font-weight: 700;
-      border-bottom: 2px solid #2C2D3C; padding-bottom: 6px;
-    }
+    section h3 { font-size:1.75rem; font-weight:700; border-bottom:2px solid #2C2D3C; padding-bottom:6px; }
 
-    main a, a { color: #2C2D3C; text-decoration: underline; }
-    main a:hover, main a:focus, a:hover, a:focus { color: #145c34; }
+    /* Links */
+    main a, a, .qr-link { color:#2C2D3C; text-decoration:underline; cursor:pointer; }
+    main a:hover, main a:focus, a:hover, a:focus, .qr-link:hover, .qr-link:focus { color:#145c34; }
 
     /* Table */
-    .table-container { overflow-x: auto; margin-top: 20px; }
-    table.meshstl-channels { width: 100%; border-collapse: collapse; min-width: 600px; }
-    table.meshstl-channels thead tr { background-color: #67EA94; color: #2C2D3C; }
-    table.meshstl-channels th, table.meshstl-channels td { padding: 10px; border-top: 1px solid #ccc; }
-    table.meshstl-channels tbody { background-color: #fff; color: #2C2D3C; }
-    table.meshstl-channels tbody tr:nth-child(even) { background-color: #f5f5f5; }
+    .table-container { overflow-x:auto; margin-top:20px; }
+    table.meshstl-channels { width:100%; border-collapse:collapse; min-width:600px; }
+    table.meshstl-channels thead { background-color:#67EA94; color:#2C2D3C; }
+    table.meshstl-channels th, table.meshstl-channels td { padding:10px; border-top:1px solid #ccc; }
+    table.meshstl-channels tbody tr:nth-child(even) { background-color:#f5f5f5; }
 
     /* Footer */
-    footer {
-      background-color: #67EA94; color: #2C2D3C;
-      text-align: center; padding: 15px 10px;
-      font-size: 0.95rem; box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
-      position: sticky; bottom: 0;
-    }
+    footer { background-color:#67EA94; color:#2C2D3C; text-align:center; padding:15px 10px; font-size:0.95rem; }
 
-    /* Scroll to top */
-    #scrollTopBtn {
-      position: fixed; bottom: 30px; right: 30px;
-      display: none; background-color: #67EA94; color: #2C2D3C;
-      border: none; padding: 12px 16px; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
-      box-shadow: 0 3px 6px rgba(27,156,58,0.7); z-index: 10000;
-    }
+    /* Scroll button */
+    #scrollTopBtn { position:fixed; bottom:30px; right:30px; display:none; background-color:#67EA94; color:#2C2D3C; border:none; padding:12px 16px; border-radius:50%; cursor:pointer; }
 
     /* QR Modal */
-    #qrModal > div { background-color: #fff; color: #2C2D3C; border-radius: 10px; padding: 20px; }
-    #qrModal img { max-width: 100%; max-height: 80vh; display: block; margin: auto; }
+    #qrModal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:9999; }
+    #qrModal > div { background-color:#fff; color:#2C2D3C; border-radius:10px; padding:20px; max-width:90%; max-height:90%; overflow:auto; position:relative; }
+    #qrModal img { max-width:100%; max-height:80vh; display:block; margin:auto; }
+    #qrModal span.close { position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; font-size:24px; }
 
     /* Dark Mode */
     @media (prefers-color-scheme: dark) {
-      body { background-color: #1b1b1b; color: #E7F5E1; }
-      header { background-color: #2C2D3C; color: #67EA94; }
-      header h1, header p { color: #67EA94; }
-      #menu-toggle { border-color: #67EA94; color: #67EA94; }
-      #menu-toggle:hover, #menu-toggle:focus { background-color: #67EA94; color: #2C2D3C; }
-      nav { background-color: #2C2D3C; }
-      nav a { color: #E7F5E1; }
-      nav a:hover, nav a:focus { background-color: #67EA94; color: #2C2D3C; }
-      main a, a { color: #7CFFB1; }
-      main a:hover, main a:focus, a:hover, a:focus { color: #E7F5E1; text-shadow: 0 0 6px rgba(103,234,148,0.6); }
-      section { background-color: #2C2D3C; color: #E7F5E1; box-shadow: 0 4px 12px rgba(103,234,148,0.15); }
-      section h3 { border-bottom-color: #67EA94; color: #67EA94; }
-      table.meshstl-channels { background-color: #2C2D3C; color: #E7F5E1; }
-      table.meshstl-channels tbody tr:nth-child(even) { background-color: #252525; }
-      table.meshstl-channels tbody tr:hover { background-color: #333; }
-      footer { background-color: #2C2D3C; color: #67EA94; }
-      #scrollTopBtn { background-color: #2C2D3C; color: #67EA94; }
-      #scrollTopBtn:hover { background-color: #67EA94; color: #2C2D3C; }
-      #qrModal > div { background-color: #2C2D3C; color: #E7F5E1; }
+      body { background-color:#1b1b1b; color:#E7F5E1; }
+      header { background-color:#2C2D3C; color:#67EA94; }
+      header h1, header p { color:#67EA94; }
+      #menu-toggle { border-color:#67EA94; color:#67EA94; }
+      #menu-toggle:hover, #menu-toggle:focus { background-color:#67EA94; color:#2C2D3C; }
+      nav { background-color:#2C2D3C; }
+      nav a { color:#E7F5E1; }
+      nav a:hover, nav a:focus { background-color:#67EA94; color:#2C2D3C; }
+      main a, a, .qr-link { color:#7CFFB1; }
+      main a:hover, main a:focus, a:hover, a:focus, .qr-link:hover, .qr-link:focus { color:#E7F5E1; text-shadow:0 0 6px rgba(103,234,148,0.6); }
+      section { background-color:#2C2D3C; color:#E7F5E1; box-shadow:0 4px 12px rgba(103,234,148,0.15); }
+      section h3 { border-bottom-color:#67EA94; color:#67EA94; }
+      table.meshstl-channels thead { background-color:#2C2D3C; color:#E7F5E1; }
+      table.meshstl-channels tbody tr { background-color:#2C2D3C; color:#E7F5E1; }
+      table.meshstl-channels tbody tr:nth-child(even) { background-color:#252525; }
+      table.meshstl-channels tbody tr:hover { background-color:#333; }
+      footer { background-color:#2C2D3C; color:#67EA94; }
+      #scrollTopBtn { background-color:#2C2D3C; color:#67EA94; }
+      #qrModal > div { background-color:#2C2D3C; color:#E7F5E1; }
     }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      section { padding:20px 15px; }
+      table.meshstl-channels { min-width:100%; }
+      #menu-toggle { display:inline-flex; }
+      nav { flex-direction:column; max-height:0; overflow:hidden; transition:max-height 0.35s ease; border-radius:0 0 12px 12px; }
+      nav.open { max-height:1000px; padding:15px 10px; }
+      nav a { width:100%; text-align:center; border-bottom:1px solid rgba(255,255,255,0.2); border-radius:0; }
+      nav a:last-child { border-bottom:none; }
+    }
+
+    /* Discord icon */
+    .discord-icon { width:28px; vertical-align:middle; margin-right:8px; filter:drop-shadow(0 0 1px rgba(0,0,0,0.1)); }
   </style>
 </head>
-
 <body>
 
 <header>
@@ -152,15 +132,6 @@
   <p>Connecting St. Louis through Meshtastic - A reliable communication network</p>
   <button id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation">&#9776; Sections</button>
 </header>
-
-<style>
-  header img.logo {
-    height: 60px;
-    display: block;
-    margin: 0 auto 15px auto; /* centers and adds spacing below */
-  }
-</style>
-
 
 <nav id="primary-navigation" role="navigation" aria-label="Primary navigation">
   <a href="#about">About</a>
@@ -173,287 +144,102 @@
 </nav>
 
 <main>
-	<section id="about">
-	    <h3>About MeshSTL</h3>
-	    <p>MeshSTL is a community-driven initiative to bring offline communication to the St. Louis area using the Meshtastic platform. By leveraging low-power, long-range radios, our decentralized mesh network allows people to stay connected without relying on cellular networks or the internet.</p>
-	    <p>Each Meshtastic-compatible device acts as a node, passing messages between other nodes to ensure communication persists—even during internet or phone outages. Devices like the TTGO T-Beam can be used to join the network. For a list of supported devices, visit <a href="https://meshtastic.org/docs/hardware/devices/" target="_blank" rel="noopener noreferrer">Meshtastic Hardware Devices</a>.</p>
-	    <p><strong>MQTT Note:</strong> Those using the MQTT server (listed below) are typically either out of range of other MeshSTL users or operate ROUTER or ROUTER_LATE nodes to extend the mesh across the internet.</p>
-	    <p><strong>Warning</strong> Enabling Licensed amateur radio (HAM) on the User Config module will likely cause issues connecting to MeshSTL as it disables AES Encryption.</p>
-	</section>
+  <section id="about">
+    <h3>About MeshSTL</h3>
+    <p>MeshSTL is a community-driven initiative to bring offline communication to the St. Louis area using the Meshtastic platform.</p>
+  </section>
 
-        <section id="get-involved">
-            <h3>Get Involved</h3>
-            <p>We are always looking for new members to join the MeshSTL network. Whether you want to install your own Meshtastic device or help spread the word about MeshSTL, there are many ways you can contribute to building a resilient communication network for our region.</p>
-            <p>If you have any questions or want to get involved, reach out to us! You can also join our community discussions on our forums and Discord server.</p>
-            <p>Join us on Discord: 
-                <a href="https://discord.gg/QYxUdKZpBd" target="_blank" rel="noopener noreferrer">
-                    <img src="https://cdn.discordapp.com/icons/1269722750432317481/550da12a8154e5d6573f9a5b1db6d110.webp?size=100&quality=lossless" alt="Discord Server Logo" class="discord-icon">
-                    MeshSTL Discord
-                </a>
-            </p>
-        </section>
-	
-	<section id="lora-settings">    
-		<h3>LoRa Config</h3>
-		<ul>
-			<li><strong>Use Modem Preset</strong> True</li>
-			<li><strong>Modem Preset</strong> Long_Fast</li>
-			<li><strong>Frequency Offset</strong> 0.0</li>
-			<li><strong>Region</strong> United States</li>
-			<li><strong>Hop Limit</strong> 3 (minimum) - 7 (maximum)</li>
-			<li><strong>TX enabled</strong> True</li>
-			<li><strong>TX Power</strong> 30</li>
-			<li><strong>Frequency Slot</strong> 20</li>
-			<li><strong>Overide Duty Cycle</strong> True</li>
-			<li><strong>Overide Frequency</strong> 906.875</li>
-			<li><strong>Ignore MQTT</strong> False</li>
-			<li><strong>OK to MQTT</strong> True</li>
-		</ul>
-	</section>
-	    
-	<section id="channels">
-	  <h3>MeshSTL Channels</h3>
-	  <p>
-	    MeshSTL uses multiple Meshtastic channels to organize communication.
-	    The <strong>Primary channel</strong> is for node discovery and general chat,
-	    while <strong>Secondary channels</strong> serve specific roles like area mesh chats and emergency alerting. (Easy setup QR Code available for scanning below)
-	  </p>
+  <section id="get-involved">
+    <h3>Get Involved</h3>
+    <p>Join our Discord for support and discussion:</p>
+    <p>
+      <a href="https://discord.gg/QYxUdKZpBd" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn.discordapp.com/icons/1269722750432317481/550da12a8154e5d6573f9a5b1db6d110.webp?size=100&quality=lossless" alt="Discord" class="discord-icon">
+        MeshSTL Discord
+      </a>
+    </p>
+  </section>
 
-	<style>
-  /* Table container scroll */
-  .table-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin-top: 20px;
-  }
+  <section id="lora-settings">
+    <h3>LoRa Config</h3>
+    <ul>
+      <li><strong>Use Modem Preset:</strong> True</li>
+      <li><strong>Modem Preset:</strong> Long_Fast</li>
+      <li><strong>TX Power:</strong> 30</li>
+      <li><strong>Frequency Slot:</strong> 20</li>
+      <li><strong>Override Duty Cycle:</strong> True</li>
+      <li><strong>Override Frequency:</strong> 906.875</li>
+    </ul>
+  </section>
 
-  table.meshstl-channels {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 600px; /* ensures horizontal scroll on small screens */
-  }
+  <section id="channels">
+    <h3>MeshSTL Channels</h3>
+    <div class="table-container">
+      <table class="meshstl-channels" aria-label="MeshSTL Channels">
+        <thead>
+          <tr>
+            <th>Channel Name</th>
+            <th>Role</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>LongFast</td><td>Primary</td><td>Node discovery, external chat</td></tr>
+          <tr><td>MeshSTL</td><td>Secondary</td><td>Internal mesh communication</td></tr>
+          <tr><td>Desired EAS channel/s</td><td>Secondary</td><td>Emergency Alert System</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:20px;">
+      <a class="qr-link" onclick="showQR(); return false;">Click to scan QR Code for all channels</a>
+    </p>
 
-  table.meshstl-channels thead tr {
-    background-color: #67EA94;
-    color: #2C2D3C;
-  }
+    <div id="qrModal">
+      <div>
+        <span class="close" onclick="closeQR()">&times;</span>
+        <img src="/qr-code.png" alt="MeshSTL All Channels QR Code">
+      </div>
+    </div>
+  </section>
 
-  table.meshstl-channels th,
-  table.meshstl-channels td {
-    padding: 10px;
-    text-align: left;
-    border-top: 1px solid #ccc;
-  }
+  <section id="easystem">
+    <h3>EAS System</h3>
+    <p>Special channels for emergency alerting.</p>
+  </section>
 
-  table.meshstl-channels th:first-child {
-    border-radius: 8px 0 0 0;
-  }
+  <section id="mqtt-settings">
+    <h3>MQTT Server</h3>
+    <ul>
+      <li>Host: mqtt.meshstl.org</li>
+      <li>Port: 1883</li>
+      <li>Username: MeshSTL</li>
+      <li>Password: meshstl</li>
+      <li>Root Topic: msh/US/MO</li>
+    </ul>
+  </section>
 
-  table.meshstl-channels th:last-child {
-    border-radius: 0 8px 0 0;
-  }
+  <section id="meshview">
+    <h3>Mesh Info</h3>
+    <p>Access via <a href="https://meshview.meshstl.org/" target="_blank">Meshview app</a>.</p>
+  </section>
+</main>
 
-  table.meshstl-channels tbody {
-    background-color: #fff;
-    color: #2C2D3C;
-  }
-
-  /* Responsive adjustments for smaller devices */
-  @media (max-width: 600px) {
-    table.meshstl-channels th,
-    table.meshstl-channels td {
-      padding: 8px 6px;
-      font-size: 0.9rem;
-    }
-  }
-</style>
-
-<div class="table-container">
-  <table class="meshstl-channels" aria-label="MeshSTL Channels">
-    <thead>
-      <tr>
-        <th>Channel Name</th>
-        <th>Channel Role</th>
-        <th>Purpose</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>LongFast</strong></td>
-        <td><strong>Primary</strong></td>
-        <td>Node discovery, chatting with nodes outside the MeshSTL network</td>
-      </tr>
-      <tr>
-        <td><strong>MeshSTL</strong></td>
-        <td><strong>Secondary</strong></td>
-        <td>Primary internal mesh communication</td>
-      </tr>
-      <tr>
-        <td><strong>Desired EAS channel/s</strong></td>
-        <td><strong>Secondary</strong></td>
-        <td>Emergency Alert System (EAS) alerts (see section below)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-	  <p style="margin-top: 20px;">To join the MeshSTL network:</p>
-	  <ul style="margin-top: 10px; padding-left: 20px;">
-	    <li>Scan the QR Code below on the Meshtastic App</li>
-	    <li>Select Replace</li>
-	    <li>Click Accept</li>
-	  </ul>
-
-	<p style="margin-top: 20px;">
-  <a href="#" onclick="showQR(); return false;" style="color: #2C2D3C; text-decoration: underline;">
-    Click here to scan a QR Code for all channels
-  </a>
-</p>
-
-<!-- QR Modal -->
-<div id="qrModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6); align-items:center; justify-content:center;">
-  <div style="background:white; padding:20px; border-radius:10px; position:relative; max-width:90%; max-height:90%; overflow:auto;">
-    <span onclick="closeQR()" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold; font-size: 24px;">&times;</span>
-    <img src="/qr-code.png" alt="MeshSTL All Channels QR Code" style="max-width:100%; max-height:80vh; display:block; margin:auto;">
-  </div>
-</div>
+<footer>&copy; 2025 MeshSTL Community. All rights reserved.</footer>
 
 <script>
-  function showQR() {
-    document.getElementById('qrModal').style.display = 'flex';
-    document.body.classList.add('modal-open');
-  }
+  const menuToggle=document.getElementById('menu-toggle');
+  const nav=document.getElementById('primary-navigation');
+  menuToggle.addEventListener('click',()=>{ const isOpen=nav.classList.toggle('open'); menuToggle.setAttribute('aria-expanded',isOpen); });
+  nav.querySelectorAll('a').forEach(link=>{ link.addEventListener('click',()=>{ if(nav.classList.contains('open')){ nav.classList.remove('open'); menuToggle.setAttribute('aria-expanded',false); } }); });
 
-  function closeQR() {
-    document.getElementById('qrModal').style.display = 'none';
-    document.body.classList.remove('modal-open');
-  }
+  function showQR(){ document.getElementById('qrModal').style.display='flex'; document.body.classList.add('modal-open'); }
+  function closeQR(){ document.getElementById('qrModal').style.display='none'; document.body.classList.remove('modal-open'); }
+
+  const scrollBtn=document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll',()=>{ scrollBtn.style.display=(window.scrollY>150)?'block':'none'; });
+  scrollBtn.addEventListener('click',()=>{ window.scrollTo({top:0,behavior:'smooth'}); });
 </script>
 
-<style>
-  body.modal-open {
-    overflow: hidden;
-  }
-</style>
-	</section>
-
-	<section id="easystem">
-  	  <h3>EAS System</h3>
-   	 <p>EAS System consist of special channels designed for emergency alert systems (EAS) sent from the dedicated EAS Node. It is used to broadcast critical emergency alerts within the MeshSTL LoRa and MQTT network.</p>
-  	  <p>Ensure these settings are correctly configured in the device to ensure seamless integration with the EAS System. If you are configuring a Meshtastic device for these channel, follow the steps outlined here.</p>
-  	  <p><strong>Important Notes:</strong> The uplink and downlink are only needed if you are using MQTT for communication. For other setups, these may not be necessary.</p>
-
-  	  <h4>Coverage Area (Counties/Cities)</h4>
-  	  <img src="MeshSTL-EAS.png" alt="Map showing coverage area of EAS System channels" style="max-width:100%; height:auto; margin-bottom:1em;">
-  	  <p>The EAS System settings:</p>
-  	  <ul>
-   	     <li><strong>RED:</strong>MeshSTL-EAS</li>
-   	     <li><strong>BLUE:</strong>CMRG-EAS</li>
-		 <li><strong>PURPLE:</strong>ILMesh-EAS</li>
-		 <li><strong>ORANGE:</strong>SEMO-EAS</li>
-		 <li><strong>YELLOW:</strong>Ozarks-EAS</li>
-		 <li><strong>PINK:</strong>NEMO-EAS</li>
-		 <li><strong>PSK Key:</strong>AQ== (for all channels of EAS)</li>
-  	  </ul>
-	</section>
-
-        <section id="mqtt-settings">
-            <h3>MQTT Server (Recommended for Routers/Optional for Clients)</h3>
-            <p>You can sync messages and extend the Mesh using the MeshSTL MQTT broker (CLIENT_MUTE and CLIENT_HIDDEN nodes won't extend the mesh). Enter these settings in your Meshtastic app.  
-            In the <strong>Channel</strong> section of the radio config, make sure <strong>Uplink</strong> is enabled if you choose to use MQTT. <strong>Downlink</strong> is recommended on <em>LongFast</em> unless you don't want to extend the mesh more; however, it is recommended for MeshSTL and MeshSTL-EAS LoRa channels.</p>
-        <ul>
-            <li><strong>Host:</strong> mqtt.meshstl.org</li>
-            <li><strong>Port:</strong> 1883</li>
-	    <li><strong>Encryption:</strong> Yes</li>
-            <li><strong>Username:</strong> MeshSTL</li>
-            <li><strong>Password:</strong> meshstl</li>
-	    <li><strong>Root Topic:</strong> msh/US/MO</li>
-
-        </ul>
-        <p>Using MQTT helps to extend the network by bridging radios beyond local LoRa range.</p>
-    </section>
-
-	<section id="meshview">
-	  <h3>Mesh Info</h3>
-	  <div style="
-	    background-color: #fff3cd;
-	    color: #856404;
-	    padding: 15px 20px;
-	    margin-bottom: 20px;
-	    border: 2px solid #856404;
-	    border-radius: 10px;
-	    font-weight: bold;
-	    font-size: 1.1rem;
-	  ">
-	    ⚠️ Currently testing. Site may go down without notice.
-	  </div>
-	  <p>
-	    Access the Mesh Info via the 
-	    <a href="https://meshview.meshstl.org/" target="_blank" style="color:#856404; text-decoration:underline;">
-		Meshview app
-	    </a>.
-	  </p>
-	</section>
-
-<footer>
-  &copy; 2025 MeshSTL Community. All rights reserved.
-</footer>
-
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const nav = document.getElementById('primary-navigation');
-
-  menuToggle.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', isOpen);
-  });
-
-  // Close nav on mobile when a link is clicked
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', false);
-      }
-    });
-  });
-
-  // QR modal function
-  function showQR() {
-    document.getElementById('qrModal').style.display = 'flex';
-  }
-</script>
-
-<button id="scrollTopBtn" aria-label="Scroll to top" title="Scroll to top">⬆️</button>
-
-<script>
-  (function() {
-    const scrollBtn = document.getElementById('scrollTopBtn');
-
-    if (!scrollBtn) return;
-
-    // Show button immediately if already scrolled past threshold on page load
-    if (window.scrollY > 150) {
-      scrollBtn.style.display = 'block';
-    }
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 150) {
-        scrollBtn.style.display = 'block';
-      } else {
-        scrollBtn.style.display = 'none';
-      }
-    });
-
-    scrollBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  })();
-</script>
-
-
+<button id="scrollTopBtn" aria-label="Scroll to top">⬆️</button>
 </body>
 </html>
