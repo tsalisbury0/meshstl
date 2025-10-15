@@ -23,7 +23,7 @@
   <link rel="manifest" href="site.webmanifest" />
 
   <style>
-    /* Reset & base */
+    /* Reset & Base */
     * { box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -31,10 +31,11 @@
       background-color: #E7F5E1;
       color: #2C2D3C;
       line-height: 1.6;
-      display: flex; flex-direction: column;
       min-height: 100vh;
+      display: flex; flex-direction: column;
     }
 
+    /* Header */
     header {
       background-color: #67EA94;
       color: #2C2D3C;
@@ -49,6 +50,7 @@
     header h1 { font-weight: 700; font-size: 2.8rem; margin-bottom: 10px; }
     header p { font-size: 1.25rem; max-width: 600px; margin: 0 auto; font-weight: 400; }
 
+    /* Nav */
     #menu-toggle {
       font-size: 1.25rem; font-weight: 600; padding: 8px 20px;
       background-color: transparent; border: 2px solid white; border-radius: 6px;
@@ -71,9 +73,7 @@
     }
     nav a:hover, nav a:focus { background-color: #2C2D3C; color: #67EA94; transform: scale(1.05); }
 
-    main a { color: #2C2D3C; text-decoration: underline; }
-    main a:hover, main a:focus { color: #145c34; }
-
+    /* Sections */
     section {
       background-color: #fff;
       border-radius: 12px;
@@ -88,14 +88,8 @@
       border-bottom: 2px solid #2C2D3C; padding-bottom: 6px;
     }
 
-    .discord-icon { width: 28px; vertical-align: middle; margin-right: 8px; filter: drop-shadow(0 0 1px rgba(0,0,0,0.1)); }
-
-    footer {
-      background-color: #67EA94; color: #2C2D3C;
-      text-align: center; padding: 15px 10px;
-      font-size: 0.95rem; box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
-      position: sticky; bottom: 0;
-    }
+    main a, a { color: #2C2D3C; text-decoration: underline; }
+    main a:hover, main a:focus, a:hover, a:focus { color: #145c34; }
 
     /* Table */
     .table-container { overflow-x: auto; margin-top: 20px; }
@@ -105,7 +99,15 @@
     table.meshstl-channels tbody { background-color: #fff; color: #2C2D3C; }
     table.meshstl-channels tbody tr:nth-child(even) { background-color: #f5f5f5; }
 
-    /* Scroll to top button */
+    /* Footer */
+    footer {
+      background-color: #67EA94; color: #2C2D3C;
+      text-align: center; padding: 15px 10px;
+      font-size: 0.95rem; box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+      position: sticky; bottom: 0;
+    }
+
+    /* Scroll to top */
     #scrollTopBtn {
       position: fixed; bottom: 30px; right: 30px;
       display: none; background-color: #67EA94; color: #2C2D3C;
@@ -113,7 +115,11 @@
       box-shadow: 0 3px 6px rgba(27,156,58,0.7); z-index: 10000;
     }
 
-    /* Dark mode */
+    /* QR Modal */
+    #qrModal > div { background-color: #fff; color: #2C2D3C; border-radius: 10px; padding: 20px; }
+    #qrModal img { max-width: 100%; max-height: 80vh; display: block; margin: auto; }
+
+    /* Dark Mode */
     @media (prefers-color-scheme: dark) {
       body { background-color: #1b1b1b; color: #E7F5E1; }
       header { background-color: #2C2D3C; color: #67EA94; }
@@ -127,17 +133,17 @@
       main a:hover, main a:focus, a:hover, a:focus { color: #E7F5E1; text-shadow: 0 0 6px rgba(103,234,148,0.6); }
       section { background-color: #2C2D3C; color: #E7F5E1; box-shadow: 0 4px 12px rgba(103,234,148,0.15); }
       section h3 { border-bottom-color: #67EA94; color: #67EA94; }
-      footer { background-color: #2C2D3C; color: #67EA94; }
-      .table-container { background-color: #2C2D3C; }
       table.meshstl-channels { background-color: #2C2D3C; color: #E7F5E1; }
-      table.meshstl-channels thead tr { background-color: #67EA94; color: #2C2D3C; }
       table.meshstl-channels tbody tr:nth-child(even) { background-color: #252525; }
       table.meshstl-channels tbody tr:hover { background-color: #333; }
-      #scrollTopBtn { background-color: #2C2D3C; color: #67EA94; box-shadow: 0 3px 6px rgba(103,234,148,0.5); }
+      footer { background-color: #2C2D3C; color: #67EA94; }
+      #scrollTopBtn { background-color: #2C2D3C; color: #67EA94; }
       #scrollTopBtn:hover { background-color: #67EA94; color: #2C2D3C; }
+      #qrModal > div { background-color: #2C2D3C; color: #E7F5E1; }
     }
   </style>
 </head>
+
 <body>
 
 <header>
