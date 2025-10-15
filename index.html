@@ -172,54 +172,120 @@
 
     .discord-icon {
       width: 28px;
-      vertical-align: middle;
-      margin-right: 8px;
-      filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
+      vertical-align: middle;<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MeshSTL</title>
+  <meta name="description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
+
+  <!-- Open Graph (Facebook & Twitter) -->
+  <meta property="og:url" content="https://meshstl.org">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MeshSTL">
+  <meta property="og:description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
+  <meta property="og:image" content="https://meshstl.org/MeshSTL.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="meshstl.org">
+  <meta property="twitter:url" content="https://meshstl.org">
+  <meta name="twitter:title" content="MeshSTL">
+  <meta name="twitter:description" content="Connecting St. Louis via Meshtastic for reliable offline communication.">
+  <meta name="twitter:image" content="https://meshstl.org/MeshSTL512.png">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="site.webmanifest" />
+
+  <style>
+    /* Reset & Base */
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #E7F5E1;
+      color: #67EA94;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    footer {
+    header {
       background-color: #67EA94;
       color: #2C2D3C;
       text-align: center;
-      padding: 15px 10px;
-      font-size: 0.95rem;
-      box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      bottom: 0;
-      user-select: none;
+      padding: 60px 20px 40px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* MOBILE NAVIGATION */
+    header img.logo {
+      height: 60px;
+      display: block;
+      margin: 0 auto 15px auto;
+    }
+
+    header h1 { font-weight: 700; font-size: 2.8rem; margin-bottom: 10px; }
+    header p { font-size: 1.25rem; max-width: 600px; margin: 0 auto; font-weight: 400; }
+
+    #menu-toggle {
+      font-size: 1.25rem; font-weight: 600; padding: 8px 20px;
+      background-color: transparent; border: 2px solid white; border-radius: 6px;
+      color: #2C2D3C; cursor: pointer; user-select: none; margin-top: 20px;
+      display: inline-flex; align-items: center; gap: 8px; transition: background-color 0.3s ease;
+    }
+    #menu-toggle:hover, #menu-toggle:focus { background-color: #67EA94; outline: none; }
+
+    nav {
+      background-color: #67EA94;
+      display: flex; flex-wrap: wrap; justify-content: center; padding: 15px 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); gap: 15px; transition: max-height 0.3s ease;
+    }
+
+    nav a {
+      color: #2C2D3C; font-weight: 600; text-decoration: none !important;
+      padding: 10px 16px; border-radius: 6px; transition: background-color 0.3s ease, transform 0.2s ease;
+      font-size: 1.1rem; user-select: none;
+    }
+
+    nav a:hover, nav a:focus { background-color: #2C2D3C; color: #67EA94; transform: scale(1.05); }
+    main a { color: #2C2D3C; text-decoration: underline; transition: color 0.25s ease; }
+    main a:hover, main a:focus { color: #145c34; }
+
+    section {
+      background-color: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(27,156,58,0.15);
+      margin-bottom: 30px; padding: 25px 30px; color: #2C2D3C;
+    }
+    section h3 { margin-top: 0; margin-bottom: 15px; font-size: 1.75rem; font-weight: 700;
+                 border-bottom: 2px solid #2C2D3C; padding-bottom: 6px; }
+
+    section p, section ul { font-size: 1.1rem; font-weight: 400; }
+    section ul { padding-left: 20px; margin-top: 10px; }
+    section ul li { margin-bottom: 6px; }
+    .discord-icon { width: 28px; vertical-align: middle; margin-right: 8px; filter: drop-shadow(0 0 1px rgba(0,0,0,0.1)); }
+
+    footer {
+      background-color: #67EA94; color: #2C2D3C; text-align: center;
+      padding: 15px 10px; font-size: 0.95rem; box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+      position: sticky; bottom: 0; user-select: none;
+    }
+
+    /* Table Styles */
+    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 20px; }
+    table.meshstl-channels { width: 100%; border-collapse: collapse; min-width: 600px; }
+    table.meshstl-channels thead tr { background-color: #67EA94; color: #2C2D3C; }
+    table.meshstl-channels th, table.meshstl-channels td { padding: 10px; text-align: left; border-top: 1px solid #ccc; }
+    table.meshstl-channels tbody { background-color: #fff; color: #2C2D3C; }
+    table.meshstl-channels tbody tr:nth-child(even) { background-color: #f5f5f5; }
+
+    /* Mobile */
     @media (max-width: 768px) {
       #menu-toggle { display: block; }
-
-      nav {
-        flex-direction: column;
-        max-height: 0;
-        overflow: hidden;
-        padding: 0 10px;
-        gap: 0;
-        box-shadow: none;
-        background-color: #67EA94;
-        border-radius: 0 0 12px 12px;
-        transition: max-height 0.35s ease;
-      }
-
-      nav.open {
-        max-height: 1000px;
-        padding: 15px 10px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      }
-
-      nav a {
-        padding: 12px 16px;
-        font-size: 1.2rem;
-        border-radius: 0;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-        width: 100%;
-        text-align: center;
-      }
-
+      nav { flex-direction: column; max-height: 0; overflow: hidden; padding: 0 10px; gap: 0; border-radius: 0 0 12px 12px; }
+      nav.open { max-height: 1000px; padding: 15px 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+      nav a { padding: 12px 16px; font-size: 1.2rem; border-radius: 0; border-bottom: 1px solid rgba(255,255,255,0.2); width: 100%; text-align: center; }
       nav a:last-child { border-bottom: none; }
     }
 
@@ -230,96 +296,45 @@
       main { padding: 20px 15px 50px; }
       section { padding: 20px 15px; }
       section h3 { font-size: 1.4rem; }
+      table.meshstl-channels th, table.meshstl-channels td { padding: 8px 6px; font-size: 0.9rem; }
     }
 
-    /* QR modal */
-    #qrModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.6);
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 10px;
-      overflow: auto;
-      display: flex;
-    }
+    /* QR Modal & Scroll Top */
+    #qrModal > div { border-radius: 10px; position: relative; max-width: 90%; max-height: 90%; overflow: auto; }
+    #scrollTopBtn { position: fixed; bottom: 30px; right: 30px; display: none; background-color: #67EA94; color: white; border: none; padding: 12px 16px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; box-shadow: 0 3px 6px rgba(27,156,58,0.7); z-index: 10000; }
 
-    #qrModal > div {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      position: relative;
-      max-width: 90%;
-      max-height: 90%;
-      overflow: auto;
-    }
-
-    #qrModal img {
-      max-width: 100%;
-      max-height: 80vh;
-      display: block;
-      margin: auto;
-    }
-
-    body.modal-open { overflow: hidden; }
-
-    #scrollTopBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: none;
-      background-color: #67EA94;
-      color: white;
-      border: none;
-      padding: 12px 16px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      cursor: pointer;
-      box-shadow: 0 3px 6px rgba(27, 156, 58, 0.7);
-      z-index: 10000;
-      user-select: none;
-      transition: opacity 0.3s ease;
-    }
-
-    #scrollTopBtn:hover,
-    #scrollTopBtn:focus { opacity: 0.85; }
-
-    @media (min-width: 769px) { #menu-toggle { display: none !important; } }
-
-    /* Dark mode override */
+    /* DARK MODE */
     @media (prefers-color-scheme: dark) {
-      body { background-color: #1b1b1b; color: #E7F5E1; }
-      header { background-color: #2C2D3C; color: #67EA94; }
-      header h1, header p { color: #67EA94; }
-      #menu-toggle { border-color: #67EA94; color: #67EA94; }
-      #menu-toggle:hover { background-color: #67EA94; color: #2C2D3C; }
-      nav { background-color: #2C2D3C; }
-      nav a { color: #E7F5E1; }
-      nav a:hover, nav a:focus { background-color: #67EA94; color: #2C2D3C; }
-      section { background-color: #2C2D3C; color: #E7F5E1; box-shadow: 0 4px 12px rgba(103,234,148,0.15); }
-      section h3 { border-bottom-color: #67EA94; color: #67EA94; }
-      a { color: #7CFFB1; text-decoration: underline; }
-      a:hover, a:focus { color: #E7F5E1; text-shadow: 0 0 6px rgba(103,234,148,0.6); }
+      body { background-color: #1b1b1b !important; color: #E7F5E1 !important; }
+      header { background-color: #2C2D3C !important; color: #67EA94 !important; }
+      header h1, header p { color: #67EA94 !important; }
+      #menu-toggle { border-color: #67EA94 !important; color: #67EA94 !important; }
+      #menu-toggle:hover, #menu-toggle:focus { background-color: #67EA94 !important; color: #2C2D3C !important; }
 
-      /* Table fixes */
-      .table-container { background-color: #2C2D3C; border-radius: 8px; padding: 10px; }
-      table.meshstl-channels { background-color: #2C2D3C; color: #E7F5E1; border-collapse: collapse; width: 100%; }
-      table.meshstl-channels thead tr { background-color: #67EA94; color: #2C2D3C; }
-      table.meshstl-channels th, table.meshstl-channels td { padding: 10px; border-top: 1px solid #67EA94; }
-      table.meshstl-channels tbody tr { background-color: #2C2D3C; }
-      table.meshstl-channels tbody tr:nth-child(even) { background-color: #252525; }
-      table.meshstl-channels tbody tr:hover { background-color: #333; }
+      nav { background-color: #2C2D3C !important; }
+      nav a { color: #E7F5E1 !important; }
+      nav a:hover, nav a:focus { background-color: #67EA94 !important; color: #2C2D3C !important; }
 
-      footer { background-color: #2C2D3C; color: #67EA94; }
-      #scrollTopBtn { background-color: #2C2D3C; color: #67EA94; box-shadow: 0 3px 6px rgba(103,234,148,0.5); }
-      #scrollTopBtn:hover { background-color: #67EA94; color: #2C2D3C; }
+      section { background-color: #2C2D3C !important; color: #E7F5E1 !important; box-shadow: 0 4px 12px rgba(103,234,148,0.15) !important; }
+      section h3 { border-bottom-color: #67EA94 !important; color: #67EA94 !important; }
+      main a, a { color: #7CFFB1 !important; }
+      main a:hover, main a:focus, a:hover, a:focus { color: #E7F5E1 !important; text-shadow: 0 0 6px rgba(103,234,148,0.6) !important; }
 
-      #qrModal > div { background: #2C2D3C; color: #E7F5E1; }
-      #qrModal img { filter: brightness(0.9) contrast(1.1); }
+      footer { background-color: #2C2D3C !important; color: #67EA94 !important; }
+
+      /* Table */
+      .table-container { background-color: #2C2D3C !important; }
+      table.meshstl-channels { background-color: #2C2D3C !important; color: #E7F5E1 !important; }
+      table.meshstl-channels thead tr { background-color: #67EA94 !important; color: #2C2D3C !important; }
+      table.meshstl-channels th, table.meshstl-channels td { border-top: 1px solid #67EA94 !important; }
+      table.meshstl-channels tbody tr:nth-child(even) { background-color: #252525 !important; }
+      table.meshstl-channels tbody tr:hover { background-color: #333 !important; }
+
+      #scrollTopBtn { background-color: #2C2D3C !important; color: #67EA94 !important; box-shadow: 0 3px 6px rgba(103,234,148,0.5) !important; }
+      #scrollTopBtn:hover { background-color: #67EA94 !important; color: #2C2D3C !important; }
+
+      #qrModal > div { background-color: #2C2D3C !important; color: #E7F5E1 !important; }
+      #qrModal img { filter: brightness(0.9) contrast(1.1) !important; }
     }
   </style>
 </head>
