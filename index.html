@@ -151,11 +151,14 @@
 </nav>
 
 <main>
-  <section id="about">
-    <h3>About MeshSTL</h3>
-    <p>MeshSTL is a community-driven initiative to bring offline communication to the St. Louis area using the Meshtastic platform. Each device acts as a node passing messages between others to ensure connectivity.</p>
-  </section>
-
+<section id="about"> 
+  <h3>About MeshSTL</h3> 
+  <p>MeshSTL is a community-driven initiative to bring offline communication to the St. Louis area using the Meshtastic platform. By leveraging low-power, long-range radios, our decentralized mesh network allows people to stay connected without relying on cellular networks or the internet.</p> 
+  <p>Each Meshtastic-compatible device acts as a node, passing messages between other nodes to ensure communication persists—even during internet or phone outages. Devices like the TTGO T-Beam can be used to join the network. For a list of supported devices, visit <a href="https://meshtastic.org/docs/hardware/devices/" target="_blank" rel="noopener noreferrer">Meshtastic Hardware Devices</a>.</p> 
+  <p><strong>MQTT Note:</strong> Those using the MQTT server (listed below) are typically either out of range of other MeshSTL users or operate ROUTER or ROUTER_LATE nodes to extend the mesh across the internet.</p> 
+  <p><strong>Warning</strong> Enabling Licensed amateur radio (HAM) on the User Config module will likely cause issues connecting to MeshSTL as it disables AES Encryption.</p> 
+</section>
+  
   <section id="get-involved">
     <h3>Get Involved</h3>
     <p>Join our community discussions on our forums and Discord server.</p>
@@ -216,11 +219,11 @@
         <img src="/qr-code.png" alt="MeshSTL All Channels QR Code">
       </div>
     </div>
-  </section>
-
-  <section id="easystem">
-    <h3>EAS System</h3>
-    <p>Special channels designed for emergency alerts from EAS Node.</p>
+</section> 
+  <section id="easystem"> 
+    <h3>EAS System</h3> <p>EAS System consist of special channels designed for emergency alert systems (EAS) sent from the dedicated EAS Node. It is used to broadcast critical emergency alerts within the MeshSTL LoRa and MQTT network.</p> 
+    <p>Ensure these settings are correctly configured in the device to ensure seamless integration with the EAS System. If you are configuring a Meshtastic device for these channel, follow the steps outlined here.</p> 
+    <p><strong>Important Notes:</strong> The uplink and downlink are only needed if you are using MQTT for communication. For other setups, these may not be necessary.</p>
     <h4>Coverage Area</h4>
     <img src="MeshSTL-EAS.png" alt="Coverage Map" style="max-width:100%; height:auto; margin-bottom:1em;">
     <ul>
