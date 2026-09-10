@@ -1,60 +1,27 @@
-const CACHE_NAME = 'meshstl';
+const CACHE_NAME = 'meshstl-empty-v1';
 
-// Install event – cache essential files
+// Install event - Skip waiting to activate immediately
 self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
-  );
-  self.skipWaiting(); // Activate service worker immediately
+  self.skipWaiting();
 });
 
-// Activate event – remove old caches
+// Activate event - Forcefully delete all existing caches from visitors' browsers
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
-      )
-    )
+    caches.keys().then(keys => {
+      return Promise.all(
+        keys.map(key => {
+          console.log('Clearing old PWA cache:', key);
+          return caches.delete(key);
+        })
+      );
+    })
   );
-  self.clients.claim();
+  self.clients.claim(); // Take control of open tabs immediately
 });
 
-// Fetch event – handles requests differently based on type
+// Fetch event - Required for PWA installation, but passes requests directly to the network
 self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-
-  if (url.pathname.endsWith('.php')) {
-    // Network-first strategy for PHP files
-    event.respondWith(
-      fetch(event.request)
-        .then(networkResponse => {
-          return caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-        })
-        .catch(() => caches.match(event.request))
-    );
-
-  } else if (url.pathname.endsWith('data.json')) {
-    // Always fetch fresh data.json with fallback for offline
-    event.respondWith(
-      fetch(event.request)
-        .then(response => response)
-        .catch(() => {
-          return new Response('[]', {
-            headers: { 'Content-Type': 'application/json' }
-          });
-        })
-    );
-
-  } else {
-    // Cache-first strategy for all other requests
-    event.respondWith(
-      caches.match(event.request).then(response =>
-        response || fetch(event.request)
-      )
-    );
-  }
+  // Pure pass-through: No caching, no storage, always live network
+  event.respondWith(fetch(event.request));
 });
